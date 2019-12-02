@@ -1,13 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Todos from './components/Todos'
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Приложение</h1>
-    </div>
-  );
+class App extends Component {
+  state = {
+    todos: [
+      {
+        id: 1,
+        title: 'Из мусорки',
+        completed: false
+      },
+      {
+        id: 2,
+        title: 'Какойто ужин',
+        completed: false
+      },
+      {
+        id: 3,
+        title: 'Что-то непонятное',
+        completed: false
+      },
+    ]
+  }
+
+  render() {
+  
+    return (
+      <div className="App">
+        <h1>Приложение</h1>
+        <Todos todos={this.state.todos} />
+      </div>
+    );
+  }
 }
 
 export default App;
