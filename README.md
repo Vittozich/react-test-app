@@ -1,72 +1,276 @@
+My test react app. At first I repeated code from [Video](https://www.youtube.com/watch?v=sBws8MSXN7A&t), then I just did different things like - replace classes with hooks (not completed), create my own components (not completed), experements (not completed). 
+
+### `DECEMBER 2019`
+
+Down bellow something like "learning documentation"
+
+
+# Default documentation
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+    npm start
+ins opened in onFocus browser:
+ [http://localhost:3000](http://localhost:3000)
 
-In the project directory, you can run:
 
-### `npm start`
+### Tests:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    npm test
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Build for project:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    npm run build
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Learn about
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Like in this.Video
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### For thinking:
+- you have to learn JS for work React
+    - classes, destructuring, forEach, map, filter, ArrowFunctions, Fetch API, Promises.
+- React is not just library it's framework
+- React use JSX to work with DOM (html), JS and css
+- React consists of components
+- Each component have state and can share states
+- No need to refresh the page
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<hr>
 
-## Learn More
+To simplify work with this library will allow Visual Studio Code, especially for me, because on my work I forced to use phpstorm (old version) and in is bad work js syntax.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<hr>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### For fast work with React need to use some snippets, exactly fits:
 
-### Code Splitting
+    ES7 React/Redux/GraphQL/React-Native snippets
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Search and install in extensions Visual Studio Code
 
-### Analyzing the Bundle Size
+Some command in code (use Tab) when created new element (component):
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+`rce` (Tab) - Fast create Class component
 
-### Making a Progressive Web App
+`rfc` (Tab) - Fast create Function
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+<hr>
+To autocomlete html in code enable setting in Visual Studio Code:
 
-### Advanced Configuration
+    "html.autoClosingTags": true
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+<hr>
 
-### Deployment
+To create project:
+    npx create-react-app react-test-app
+    cd react-test-app
+    npm start
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+<hr>
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+In index.html  
 
-    https://www.youtube.com/watch?v=sBws8MSXN7A&t
+`<div id="root"></div>` 
 
-    "emmet.triggerExpansionOnTab": true
+it is output for React stuff
+
+<hr>
+
+In index.js imports main component and output all code to index.html
+
+<hr>
+
+To call state elements need to do:
+
+`this.state.someElement`
+
+<hr>
+
+To use other components need to imporn component then use it in render like this 
+
+`import SomeComponent from './components/SomeComponent'`
+
+`<SomeComponent/>`
+
+<hr>
+
+To pass element into component create attribute:
+
+`<SomeComponent someElement={this.state.someElement}  />`
+
+Now someElement is prop in SomeComponent
+
+Can pass even functions
+
+To call props need to do:
+
+`this.props.someElement`
+
+Not need redefine prop as state or something in recipient component 
+
+(In Vue.js need)
+
+<hr>
+
+When use .map method in array functions need set `key` for inner element 
+
+<hr>
+
+To validation in code need use `import PropTypes from 'prop-types'`
+
+example in current code
+
+<hr>
+
+styles in JSX like styles in HTML, but instead `'-'` is written uppercase next attribute word, like:
+
+`backgroundColor`
+
+and one more rule - double braces:
+
+`<someJsxElement style={{bacgroundC....}}>`
+
+or 
+
+`<someJsxElement style={this.styleSJE}>`
+
+`styleSJE = {bacgroundC....}`
+
+clear why
+
+and can use function with logic instead object
+
+`<someJsxElement style={this.styleSJE()}>`
+<hr>
+
+## Why need arrow functions?
+
+because.
+
+In classes we created custom methods and they do not have acces to the class, but arrow function HAVE access.
+
+`someNotArrowFunc(e){...}`
+
+To have acces need 
+`<elem onChange={this.someNotArrowFunc.bind(this,el)}>`
+to method.
+
+If we have arrow function (but no parameters):
+
+`someArrowFunc = (e) => {...}`
+
+`<elem onChange={this.someArrowFunc}`
+
+    //todo need to check!!
+
+If have parameters:
+
+
+`someArrowFunc = (e) => {...}`
+
+`<elem onChange={this.someArrowFunc.bind(this, e)}`
+
+`THIS` is always the first parameter!
+<hr>
+ Props can convert into constants in components to simplify and shortening code.
+
+ `const myElem = this.props.myElem`
+
+or if we have an object with propserties `id` and `name`:
+
+ `const { id, name } = this.props.myObjectElement`
+<hr>
+
+For generate id should use `uuid`
+
+    npm i uuid
+
+`import uuid from 'uuid'`
+
+To genegete id do:
+
+`id: uuid.v4()`
+ 
+<hr>
+
+For use components like pages in one page application should use `react-router-dom`
+
+    npm i react-router-dom
+
+Create page like creating simple function but in different folder like `pages`, but in this functions should use `<React.Fragment>` instead of wrapping standart `<div>` in the `return{...over here...}`
+
+in App.js have to 
+
+`import { BrowserRouter as Router, Route } from 'react-router-dom'`
+
+And need to wrap everything in `return{` in App.js with `<Router>`
+
+Each route content need to wrap with 
+`<Route exaxt path="/someurl or just /" render={props =>(
+    <React.Fragment>
+    some content
+    </React.Fragment>
+)}  />`
+
+`exact` use when use `/` or lower url path to not show content in url `example/secondurl/`  previous url content `example/`. 
+
+or if it component 
+`<Route path="/somecomponenturl" component={SomeComponent} />`
+
+<hr>
+
+To move over this pages should use `import { Link } from 'react-router-dom' ` in some `<Header>` or `App.js` 
+
+To create links to do:
+
+`<Link to="/">Home</link>`
+
+`<Link to="/someurl">My some url</link>`
+
+this work with Router in App.js
+
+<hr>
+
+    https://jsonplaceholder.typicode.com/
+
+This is site with json examples for working with API whithout backend
+<hr>
+
+Simple method work with API is axios
+
+    npm i axios
+
+To use axios in code should:
+
+`componentDidMount() {
+    axios.get('some_long_url_with_json_return').then(res => console.log(res.data))
+}`
+
+don't foget `import axios from 'axios'`  
+
+
+
+<hr>
+
+## Other things to help me in work
+
+none
+
+
+<hr>
+
+
+
+# P.S
+
+Документ написан на английском, но с русским акцентом.
+
+Написание этой `обучающей документации` на английском тоже является частью изучения фреймворка. 
