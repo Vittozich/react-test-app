@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './components/layouts/Header'
 import Todos from './components/Todos'
@@ -10,69 +10,66 @@ import axios from 'axios';
 
 import './App.css';
 
-class App extends Component {
-  state = {
-    todos: []
-  }
+function App() {
 
-  componentDidMount(){
+  const [todos, setTodos] = useState([]);
+
+  /*
+  At first I used use useEffect, but when I click the buttons - changes always reload
+  Then I have to use in this situation useState to reload page only one time, 
+  not after every change
+  */
+
+  useState(() => {
     axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
-    .then(res => this.setState({ todos: res.data}))
-  }
-
+      .then(res => setTodos(res.data))
+  })
 
   // Toggle Complete
-  markComplete = (id) => {
-    this.setState({
-      todos: this.state.todos.map(todo => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed
-        }
-        return todo
-      })
+  const markComplete = (id) => {
+    setTodos(todos.map(todo => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed
+      }
+      return todo
     })
+    )
   }
 
   // Delete Todo
-  delTodo = (id) => {
-    axios.delete('https://jsonplaceholder.typicode.com/todos/'+{id})
-    .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]}));
-   
+  const delTodo = (id) => {
+    axios.delete('https://jsonplaceholder.typicode.com/todos/' + { id })
+      .then(res => setTodos([...todos.filter(todo => todo.id !== id)]));
+
   }
 
   //Add Todo
-  
-  addTodo = (title) => {
-    axios.post('https://jsonplaceholder.typicode.com/todos', {    
+  const addTodo = (title) => {
+    axios.post('https://jsonplaceholder.typicode.com/todos', {
       title,
       completed: false
-    }).then(res => this.setState({todos: [...this.state.todos, res.data]}));
-    
+    }).then(res => setTodos([...todos, res.data]));
+
   }
 
-
-
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <div className="container">
-            <Header />
-            <Route exact path="/" render={props => (
-              <React.Fragment>
-                <AddTodo addTodo={this.addTodo} />
-                <Todos todos={this.state.todos} markComplete={this.markComplete}
-                  delTodo={this.delTodo} />
-              </React.Fragment>
-            )} />
-            <Route path="/about" component={About}/>
-
-          </div>
-
+  return (
+    <Router>
+      <div className="App">
+        <div className="container">
+          <Header />
+          <Route exact path="/" render={() => (
+            <React.Fragment>
+              <AddTodo addTodo={addTodo} />
+              <Todos todos={todos} markComplete={markComplete}
+                delTodo={delTodo} />
+            </React.Fragment>
+          )} />
+          <Route path="/about" component={About} />
         </div>
-      </Router>
-    );
-  }
+      </div>
+    </Router>
+  );
+
 }
 
 export default App;

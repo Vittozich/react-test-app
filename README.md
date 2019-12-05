@@ -2,7 +2,7 @@ My test react app. At first I repeated code from [Video](https://www.youtube.com
 
 ### `DECEMBER 2019`
 
-Down bellow something like "learning documentation"
+Down below something like "learning documentation"
 
 
 # Default documentation
@@ -11,14 +11,13 @@ Down bellow something like "learning documentation"
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
     npm start
+
 ins opened in onFocus browser:
  [http://localhost:3000](http://localhost:3000)
-
 
 ### Tests:
 
     npm test
-
 
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
@@ -29,6 +28,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+<hr>
 
 # Learn about
 
@@ -45,7 +45,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 <hr>
 
-To simplify work with this library will allow Visual Studio Code, especially for me, because on my work I forced to use phpstorm (old version) and in is bad work js syntax.
+To simplify work with this library will allow Visual Studio Code, especially for me, because on my work I forced to use phpstorm (old version) and it bad working with js syntax.
 
 <hr>
 
@@ -55,7 +55,7 @@ To simplify work with this library will allow Visual Studio Code, especially for
 
 Search and install in extensions Visual Studio Code
 
-Some command in code (use Tab) when created new element (component):
+### Some command in code (use Tab) when created new element (component):
 
 `rce` (Tab) - Fast create Class component
 
@@ -69,6 +69,7 @@ To autocomlete html in code enable setting in Visual Studio Code:
 <hr>
 
 To create project:
+
     npx create-react-app react-test-app
     cd react-test-app
     npm start
@@ -80,7 +81,7 @@ In index.html
 
 `<div id="root"></div>` 
 
-it is output for React stuff
+this outputs the React's stuff
 
 <hr>
 
@@ -94,7 +95,7 @@ To call state elements need to do:
 
 <hr>
 
-To use other components need to imporn component then use it in render like this 
+To use other components need to import component, then use them in render like this 
 
 `import SomeComponent from './components/SomeComponent'`
 
@@ -102,7 +103,7 @@ To use other components need to imporn component then use it in render like this
 
 <hr>
 
-To pass element into component create attribute:
+To transfer an element into a component need to create an attribute:
 
 `<SomeComponent someElement={this.state.someElement}  />`
 
@@ -114,13 +115,13 @@ To call props need to do:
 
 `this.props.someElement`
 
-Not need redefine prop as state or something in recipient component 
+Not need redefine a prop as a state or something in a recipient component 
 
 (In Vue.js need)
 
 <hr>
 
-When use .map method in array functions need set `key` for inner element 
+When use .map method in array functions need to set `key` for inner element 
 
 <hr>
 
@@ -134,19 +135,19 @@ styles in JSX like styles in HTML, but instead `'-'` is written uppercase next a
 
 `backgroundColor`
 
-and one more rule - double braces:
+And one more rule - double braces:
 
 `<someJsxElement style={{bacgroundC....}}>`
 
-or 
+Or 
 
 `<someJsxElement style={this.styleSJE}>`
 
 `styleSJE = {bacgroundC....}`
 
-clear why
+Clear why
 
-and can use function with logic instead object
+And can use function with logic instead object
 
 `<someJsxElement style={this.styleSJE()}>`
 <hr>
@@ -189,19 +190,19 @@ or if we have an object with propserties `id` and `name`:
  `const { id, name } = this.props.myObjectElement`
 <hr>
 
-For generate id should use `uuid`
+To generate id should use `uuid`
 
     npm i uuid
 
 `import uuid from 'uuid'`
 
-To genegete id do:
+To genegete id to do:
 
 `id: uuid.v4()`
  
 <hr>
 
-For use components like pages in one page application should use `react-router-dom`
+To use components like pages in one page application should use `react-router-dom`
 
     npm i react-router-dom
 
@@ -222,20 +223,20 @@ Each route content need to wrap with
 
 `exact` use when use `/` or lower url path to not show content in url `example/secondurl/`  previous url content `example/`. 
 
-or if it component 
+or if it is a component 
 `<Route path="/somecomponenturl" component={SomeComponent} />`
 
 <hr>
 
 To move over this pages should use `import { Link } from 'react-router-dom' ` in some `<Header>` or `App.js` 
 
-To create links to do:
+To create links need to do:
 
 `<Link to="/">Home</link>`
 
 `<Link to="/someurl">My some url</link>`
 
-this work with Router in App.js
+this works with Router in App.js
 
 <hr>
 
