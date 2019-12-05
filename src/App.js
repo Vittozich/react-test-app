@@ -12,7 +12,7 @@ import './App.css';
 
 function App() {
 
-  const [todos, setTodos] = useState([]);
+  let [todos, setTodos] = useState([]);
 
   /*
   At first I used use useEffect, but when I click the buttons - changes always reload

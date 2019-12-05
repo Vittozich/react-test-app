@@ -12,7 +12,7 @@ function TodoItems(props) {
     }
   }
 
-  const { id, title } = props.todo
+  let { id, title } = props.todo
 
   return (
     <div style={getStyle()}>

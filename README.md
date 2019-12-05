@@ -1,4 +1,6 @@
-My test react app. At first I repeated code from [Video](https://www.youtube.com/watch?v=sBws8MSXN7A&t), then I just did different things like - replace classes with hooks (not completed), create my own components (not completed), experements (not completed). 
+My test react app. At first I repeated code from [Video](https://www.youtube.com/watch?v=sBws8MSXN7A&t), then I just did different things like - replace classes with hooks, create my own components (not completed), experements (not completed). 
+
+All examples in code, the sequence of actions can be tracked by commits!
 
 ### `DECEMBER 2019`
 
@@ -37,7 +39,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### For thinking:
 - you have to learn JS for work React
     - classes, destructuring, forEach, map, filter, ArrowFunctions, Fetch API, Promises.
-- React is not just library it's framework
+- React is not just library it's framework !
 - React use JSX to work with DOM (html), JS and css
 - React consists of components
 - Each component have state and can share states
@@ -45,15 +47,15 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 <hr>
 
-To simplify work with this library will allow Visual Studio Code, especially for me, because on my work I forced to use phpstorm (old version) and it bad working with js syntax.
+To simplify work with this library will allow the VSCode (Visual Studio Code), especially for me, because on my work I forced to use the phpstorm (old version) and it bad working with js syntax.
 
 <hr>
 
-### For fast work with React need to use some snippets, exactly fits:
+### For fast work with React need use some snippets, exactly fits:
 
     ES7 React/Redux/GraphQL/React-Native snippets
 
-Search and install in extensions Visual Studio Code
+Search and install in extensions VSCode
 
 ### Some command in code (use Tab) when created new element (component):
 
@@ -62,13 +64,13 @@ Search and install in extensions Visual Studio Code
 `rfc` (Tab) - Fast create Function
 
 <hr>
-To autocomlete html in code enable setting in Visual Studio Code:
+To autocomlete html in code enable setting in VSCode:
 
     "html.autoClosingTags": true
 
 <hr>
 
-To create project:
+To create the project:
 
     npx create-react-app react-test-app
     cd react-test-app
@@ -85,7 +87,7 @@ this outputs the React's stuff
 
 <hr>
 
-In index.js imports main component and output all code to index.html
+In index.js imports the main component and all code to index.html
 
 <hr>
 
@@ -95,15 +97,18 @@ To call state elements need to do:
 
 <hr>
 
-To use other components need to import component, then use them in render like this 
+To use other components need to import component
 
 `import SomeComponent from './components/SomeComponent'`
+
+, then use them in render(return) like this 
+
 
 `<SomeComponent/>`
 
 <hr>
 
-To transfer an element into a component need to create an attribute:
+To transfer the element into the component need to create the attribute:
 
 `<SomeComponent someElement={this.state.someElement}  />`
 
@@ -126,8 +131,6 @@ When use .map method in array functions need to set `key` for inner element
 <hr>
 
 To validation in code need use `import PropTypes from 'prop-types'`
-
-example in current code
 
 <hr>
 
@@ -261,9 +264,55 @@ don't foget `import axios from 'axios'`
 
 <hr>
 
-## Other things to help me in work
+# Refactor components (classes to functions)
 
-none
+I used hints from this links:
+
+[React official introducing hooks](https://reactjs.org/docs/hooks-intro.html)
+
+[Many samples](https://scotch.io/tutorials/5-ways-to-convert-react-class-components-to-functional-components-w-react-hooks)
+
+To understand why functions better then classes i was listening podcasts
+
+[React podcast](https://reactpodcast.simplecast.fm/)
+
+and specifically
+
+[React Courses with Tyler McGinnis](https://shoptalkshow.com/episodes/377/)
+
+in a nutshell answer is - classes can't do what can do functions, and element `this` unpredictably work in Java Script. All this javascript programming language features. 
+
+<hr>
+
+To show difference 
+[Watch](https://github.com/Vittozich/react-test-app/commit/7c919a8b653d74826b111d9071c227729213d82e)
+
+
+
+I started refactoring in lower elements. At first in `TodoItem.js` , then `Todos.js` and and so on.
+
+Notice, when I refactor one component, other still working with this component. Half of them can be classes and others can be functions and it still works well.
+
+Small problems occurred in the file `App.js` but all interchangeably.
+
+<hr>
+
+## Main difference:
+
+
+setName and setSomeArray it is custom functions (Hooks).
+
+
+| Classes      | Functions        | Comment  |
+| ------------ |------------------| ---------| 
+| `class ComponentName extends Component {`   | `function App(props) {`    | if have no props just `()` |
+| `render() { return ` | `return` | `render()` gone |
+| `state = {name: '', someArray: []}`    | `let [name, setName] = useState(''); ` `let [someArray, setSomeArray] = useState([]);`| now when need to update prop need use `setName` (for name) and `setSomeArray` (for someArray)  instead `setState` (for all) |
+| `this.setName({name: 'new name'})` | `setName('new name')`         | words `this` and name of state is not needed | 
+| in tags `value = {this.name}` and `value = {this.props.nane}` | `value = {name}` and `value = {props.name}`| `this` gone|
+|` componentDidMount(){`| `useState(() => {` or `useEffect(() => {` | `useEffect` reload component (page) by any chage (this functionality was impossible in classes). to same functionality need use `useState` |
+
+Not so complicated
 
 
 <hr>
