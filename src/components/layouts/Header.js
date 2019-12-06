@@ -5,7 +5,11 @@ export default function Header() {
   return (
     <header style={headerStyle}>
       <h1>Мои задачи</h1>
-      <Link style={linkStyle} to="/">Главная</Link> | <Link style={linkStyle}  to="/about">Описание</Link>
+      <Link style={linkStyle} to="/">Главная</Link>
+      {' | '}
+      <Link style={linkStyle}  to="/about">Описание</Link>
+      {' | '}
+      <Link style={linkStyle}  to="/comments">Комментарии</Link>
     </header>
   )
 }

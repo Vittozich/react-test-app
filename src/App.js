@@ -4,6 +4,7 @@ import Header from './components/layouts/Header'
 import Todos from './components/Todos'
 import AddTodo from './components/AddTodo'
 import About from './components/pages/About'
+import Comments from './components/pages/comments/Comments'
 import axios from 'axios';
 // import uuid from 'uuid'
 
@@ -22,7 +23,7 @@ function App() {
 
   useState(() => {
     axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
-      .then(res => setTodos(res.data))
+      .then(res => setTodos(res.data))   
   })
 
   // Toggle Complete
@@ -53,6 +54,7 @@ function App() {
   }
 
   return (
+    
     <Router>
       <div className="App">
         <div className="container">
@@ -65,6 +67,7 @@ function App() {
             </React.Fragment>
           )} />
           <Route path="/about" component={About} />
+          <Route path="/comments" component={Comments} />
         </div>
       </div>
     </Router>
