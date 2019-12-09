@@ -4,7 +4,7 @@ import Header from './components/layouts/Header'
 import Todos from './components/Todos'
 import AddTodo from './components/AddTodo'
 import About from './components/pages/About'
-import Comments from './components/pages/comments/Comments'
+import Comments from './components/pages/comments/Index'
 import axios from 'axios';
 // import uuid from 'uuid'
 

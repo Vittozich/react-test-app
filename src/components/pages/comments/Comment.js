@@ -17,7 +17,7 @@ export default function Comment(props) {
       textAlign: 'center',
       background: '#150700',
       color: '#CC0'
-    
+
     }
   }
   const bodyStyle = () => {
@@ -38,7 +38,7 @@ export default function Comment(props) {
   return (
     <div style={blockStyle()}>
       <div style={titleStyle()}>
-        {name}
+        {id}) {name}
       </div>
       <div style={bodyStyle()}>
         {body}
