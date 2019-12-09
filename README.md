@@ -1,8 +1,10 @@
-My test react app. At first I repeated code from [Video](https://www.youtube.com/watch?v=sBws8MSXN7A&t), then I just did different things like - replace classes with hooks, create my own components (not completed), experements (not completed). 
+My test react app. At first I repeated code from [Video](https://www.youtube.com/watch?v=sBws8MSXN7A&t), then I just did different things like - replace classes with hooks, create my own components, experiments. 
 
 All examples in code, the sequence of actions can be tracked by commits!
 
 ### `DECEMBER 2019`
+
+### `learning difficulty level: 2 of 10`
 
 Down below something like "learning documentation"
 
@@ -59,7 +61,7 @@ Search and install in extensions VSCode
 
 ### Some command in code (use Tab) when created new element (component):
 
-`rce` (Tab) - Fast create Class component
+`rce` (Tab) - Fast create Class component (never use again)
 
 `rfc` (Tab) - Fast create Function
 
@@ -313,6 +315,33 @@ setName and setSomeArray it is custom functions (Hooks).
 |` componentDidMount(){`| `useState(() => {` or `useEffect(() => {` | `useEffect` reload component (page) by any chage (this functionality was impossible in classes). to same functionality need use `useState` |
 
 Not so complicated
+
+
+<hr>
+
+When create page, should capitalize a creating file as main functuion in this file. otherwise ti doesn't work. Even if this is Index.js. 
+
+Why I created `Index.js` and `Comment.js` in comments page and not just `Comment.js`:
+
+In `Index.js` I used `functions` and `<div>`, In `Comment.js` I used `.map` instead `<div>` 
+And in `Index.js` was created  buttons for pagination.
+
+<hr>
+
+## How to use `useEffect` with `axios` correctly:
+
+I have buttons, which change API's query page with `_start=?`
+
+If just create  `useEffect` with axios - when click the buttons page will flicker with old and new data. It is synchronization problem.
+
+Correct usage is create and call a async function `const fetchData = async () => {....` and `fetchData()`
+
+We can't add parameter `async` like  `useEffect(async () => {` -  in doesn't work.
+
+We can set scope to useEffect if add in the end of function array of variables ` },[startPage, pageLimit]);`
+If we didn't do it `useEffect` can see all varables. If we add `[]` function `useEffect` will not see any variables.
+
+<hr>
 
 
 <hr>
