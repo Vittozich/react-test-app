@@ -1,4 +1,4 @@
-My test react app. At first I repeated code from [Video](https://www.youtube.com/watch?v=sBws8MSXN7A&t), then I just did different things like - replace classes with hooks, create my own components, experiments. 
+My test react app. At first I repeated code from [Video](https://www.youtube.com/watch?v=sBws8MSXN7A&t), then I just did different things like - replace classes with hooks, create my own components and experiments. 
 
 All examples in code, the sequence of actions can be tracked by commits!
 
@@ -41,7 +41,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### For thinking:
 - you have to learn JS for work React
     - classes, destructuring, forEach, map, filter, ArrowFunctions, Fetch API, Promises.
-- React is not just library it's framework !
+- React is not just library it's framework (official it is library)!
 - React use JSX to work with DOM (html), JS and css
 - React consists of components
 - Each component have state and can share states
@@ -93,13 +93,13 @@ In index.js imports the main component and all code to index.html
 
 <hr>
 
-To call state elements need to do:
+To call state elements need to:
 
 `this.state.someElement`
 
 <hr>
 
-To use other components need to import component
+To use other components need to import component:
 
 `import SomeComponent from './components/SomeComponent'`
 
@@ -114,11 +114,11 @@ To transfer the element into the component need to create the attribute:
 
 `<SomeComponent someElement={this.state.someElement}  />`
 
-Now someElement is prop in SomeComponent
+Now `someElement` is prop in `SomeComponent`
 
 Can pass even functions
 
-To call props need to do:
+To call props need to:
 
 `this.props.someElement`
 
@@ -132,7 +132,7 @@ When use .map method in array functions need to set `key` for inner element
 
 <hr>
 
-To validation in code need use `import PropTypes from 'prop-types'`
+To validation in code need use: `import PropTypes from 'prop-types'`
 
 <hr>
 
@@ -150,7 +150,7 @@ Or
 
 `styleSJE = {bacgroundC....}`
 
-Clear why
+Clear why!
 
 And can use function with logic instead object
 
@@ -159,7 +159,7 @@ And can use function with logic instead object
 
 ## Why need arrow functions?
 
-because.
+Because!
 
 In classes we created custom methods and they do not have acces to the class, but arrow function HAVE access.
 
@@ -195,13 +195,13 @@ or if we have an object with propserties `id` and `name`:
  `const { id, name } = this.props.myObjectElement`
 <hr>
 
-To generate id should use `uuid`
+To generate `id` should use `uuid`
 
     npm i uuid
 
 `import uuid from 'uuid'`
 
-To genegete id to do:
+To genegete `id` to:
 
 `id: uuid.v4()`
  
@@ -241,7 +241,7 @@ To create links need to do:
 
 `<Link to="/someurl">My some url</link>`
 
-this works with Router in App.js
+This works with `Router` in `App.js`
 
 <hr>
 
@@ -250,17 +250,17 @@ this works with Router in App.js
 This is site with json examples for working with API whithout backend
 <hr>
 
-Simple method work with API is axios
+Simple method work with API is `axios`
 
     npm i axios
 
-To use axios in code should:
+To use `axios` in code should:
 
 `componentDidMount() {
     axios.get('some_long_url_with_json_return').then(res => console.log(res.data))
 }`
 
-don't foget `import axios from 'axios'`  
+don't forget `import axios from 'axios'`  
 
 
 
@@ -319,7 +319,7 @@ Not so complicated
 
 <hr>
 
-When create page, should capitalize a creating file as main functuion in this file. otherwise ti doesn't work. Even if this is Index.js. 
+When create page, should capitalize a creating file as main functuion in this file. Otherwise it doesn't work. Even if this is Index.js. 
 
 Why I created `Index.js` and `Comment.js` in comments page and not just `Comment.js`:
 
@@ -336,16 +336,12 @@ If just create  `useEffect` with axios - when click the buttons page will flicke
 
 Correct usage is create and call a async function `const fetchData = async () => {....` and `fetchData()`
 
-We can't add parameter `async` like  `useEffect(async () => {` -  in doesn't work.
+We can't add parameter `async` like  `useEffect(async () => {` -  it just doesn't work.
 
 We can set scope to useEffect if add in the end of function array of variables ` },[startPage, pageLimit]);`
 If we didn't do it `useEffect` can see all varables. If we add `[]` function `useEffect` will not see any variables.
 
 <hr>
-
-
-<hr>
-
 
 
 # P.S
