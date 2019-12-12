@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Comments from './Comments'
+import styled from 'styled-components'
 import axios from 'axios';
 
 
@@ -11,54 +12,52 @@ export default function Index() {
 
   useEffect(() => {
     const fetchData = async () => {
-      await axios.get('https://jsonplaceholder.typicode.com/comments?_start='+startPage+'&_limit='+pageLimit)
-      .then(res => setComments(res.data))      
+      await axios.get('https://jsonplaceholder.typicode.com/comments?_start=' + startPage + '&_limit=' + pageLimit)
+        .then(res => setComments(res.data))
     };
-    fetchData();   
-  },[startPage, pageLimit]);
+    fetchData();
+  }, [startPage, pageLimit]);
 
-  function pageScrol(direction){
-    if (direction === 'next'){
+  function pageScrol(direction) {
+    if (direction === 'next') {
       setStartPage(startPage + 10)
-    }else{
-      if(startPage > 0){      
+    } else {
+      if (startPage > 0) {
         setStartPage(startPage - 10)
-      }else{
+      } else {
         setStartPage(0)
-      } 
+      }
     }
   }
 
-
-  //Styles: ====================================
-  
-  const buttonsStyle = () => {
-    return {    
-      paddingTop: '5px',
-      paddingBottom: '5px',
-      background: '#150700',
-      textAlign: 'center'
-    }
-  }
-
-  const buttonStyle = () => {
-    return {
-      padding: '3px',
-      background: '#150700',
-      border: 'none',
-      color: '#CC0',
-      cursor: 'pointer'
-    }
-  }
-
+  // HTML ============
 
   return (
     <div>
-      <div style={buttonsStyle()}>
-        <button style={buttonStyle()} onClick={pageScrol.bind(this,'prev')}>PREV</button>
-        <button style={buttonStyle()} onClick={pageScrol.bind(this,'next')}>NEXT</button>
-      </div>
+      <Buttons>
+        <Button  onClick={pageScrol.bind(this, 'prev')}>PREV</Button>
+        <Button  onClick={pageScrol.bind(this, 'next')}>NEXT</Button>
+      </Buttons>
       <Comments comments={comments} />
     </div>
   )
 }
+
+// Styled ============
+
+const Buttons = styled.div`
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #150700;
+  text-align: center;
+`
+const Button = styled.button`
+  padding: 3px;
+  background-color: #150700;
+  border: none;
+  color: #CC0;
+  cursor: pointer;
+  :hover{
+    background-color: #333300
+  }
+`

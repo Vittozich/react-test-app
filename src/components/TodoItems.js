@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import styled from 'styled-components'
 
-function TodoItems(props) {
+export default function TodoItems(props) {
 
   const getStyle = () => {
     return {
@@ -14,15 +15,19 @@ function TodoItems(props) {
 
   let { id, title } = props.todo
 
+  // HTML ============
+
   return (
     <div style={getStyle()}>
       <input type="checkbox" onChange={props.markComplete.bind(this, id)} /> {' '}
       {title}
-      <button onClick={props.delTodo.bind(this, id)} style={btnStyle}>x</button>
+      <Button onClick={props.delTodo.bind(this, id)} >x</Button>
     </div>
   )
 
 }
+
+// Validation ============
 
 TodoItems.propTypes = {
   todo: PropTypes.object.isRequired,
@@ -30,15 +35,19 @@ TodoItems.propTypes = {
   delTodo: PropTypes.func.isRequired
 }
 
-const btnStyle = {
-  background: '#AA0000',
-  color: '#fff',
-  border: 'none',
-  padding: '5px 9px',
-  borderRadius: '50%',
-  cursor: 'pointer',
-  float: 'right'
+// Styled ============
 
-}
+const Button = styled.button`
+  background-color: #AA0000;
+  color: #fff;
+  border: none;
+  padding: 5px 9px;
+  border-radius: 50%;
+  cursor: pointer;
+  float: right;
+  :hover{
+    background-color: red;
+  }
+`
 
-export default TodoItems
+ 

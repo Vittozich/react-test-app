@@ -343,6 +343,38 @@ If we didn't do it `useEffect` can see all varables. If we add `[]` function `us
 
 <hr>
 
+# CSS styled library 
+
+To best work with styles with css, besides standart.css i will use 
+[styled](https://www.styled-components.com/)
+
+And learn it with the good [Video_2](https://www.youtube.com/watch?v=3SpAg5tr7Ws)
+
+    npm install --save styled-components
+
+To use this library in components need to:
+
+`import styled from 'styled-components'`
+
+and 
+
+const NewHtmlElementDiv = styled.div`.....
+some_standart_css_code....
+
+this start and end with "`"
+
+    ` some_standart_css_code `
+
+in code instead `<div>` use to `<NewHtmlElementDiv>`
+
+<hr>
+
+Temporarily finished with [Video_2.time](https://youtu.be/3SpAg5tr7Ws?t=445)
+
+<hr>
+
+<hr>
+
 
 # P.S
 
