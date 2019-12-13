@@ -1,53 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import styled from 'styled-components'
+import styled, { ThemeProvider, css } from 'styled-components'
+
+const theme = {
+  primary: '#150700',
+  secondary: '#CC0',
+  someDiff: 'green',
+}
+
+const defaultTheme = {
+  primary: '#FFF',
+  secondary: '#000',
+  someDiff: 'red',
+}
+
 
 export default function Comment(props) {
 
   let { id, name, email, body } = props.comment
 
-
-  const blockStyle = () => {
-    return {
-      marginTop: '5px',
-      border: '3px solid #150700'
-    }
-  }
-  const titleStyle = () => {
-    return {
-      textAlign: 'center',
-      background: '#150700',
-      color: '#CC0'
-
-    }
-  }
-  const bodyStyle = () => {
-    return {
-      padding: '5px'
-    }
-  }
-  const footerStyle = () => {
-    return {
-      background: '#150700',
-      color: '#AAA',
-      fontSize: '12px'
-    }
-  }
-
   // HTML ============
 
   return (
-    <CommentsBlock>
-      <Title>
-        {id}) {name}
-      </Title>
-      <Body>
-        {body}
-      </Body>
-      <Footer>
-        Commentator: {email}
-      </Footer>
-    </CommentsBlock>
+    <ThemeProvider theme={theme}>
+      <CommentsBlock>
+        <Title elemId={id} >
+          {id}) {name}
+        </Title>
+        <Body>
+          {body}
+        </Body>
+        <Footer color="someDiff">
+          Commentator: {email}
+        </Footer>
+      </CommentsBlock>
+    </ThemeProvider>
   )
 }
 
@@ -61,13 +48,13 @@ Comment.propTypes = {
 
 const CommentsBlock = styled.div`
   margin-top: 5px;
-  border: 3px solid #150700;
+  border: 3px solid ${props => props.theme.primary};
 `
 
 const Title = styled.div`
   text-align: center;
-  background-color: #150700;
-  color: #CC0;
+  background-color: ${defaultTheme.secondary};
+  color: ${props => ((props.elemId % 2) !== 0 ? '#F80' : '#CC0')};
 `
 
 const Body = styled.div`
@@ -75,7 +62,12 @@ const Body = styled.div`
 `
 
 const Footer = styled.div`
-  background-color: #150700;
-  color: #AAA;
+  /* background-color: #150700; */
+  /* color: #AAA; */
+  ${props => props.color && css`
+    color: ${props => props.theme[props.color]}
+  `}
+  background-color: ${props => defaultTheme[props.color]};
+
   font-size: 12px;
 `

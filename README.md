@@ -369,11 +369,55 @@ in code instead `<div>` use to `<NewHtmlElementDiv>`
 
 <hr>
 
-Temporarily finished with [Video_2.time](https://youtu.be/3SpAg5tr7Ws?t=445)
+In `styled` component can call JS code in `${...some_js_code...}`
+
+If need to call some variables or props in `<ThisElement>` need to declarete this props in element `<ThisElement someProp={someVariable}>` and then use it in the styled element like this:
+
+`color: ${props => (props.someProp == 'someThing' ? 'red' : 'green' )}`
+
 
 <hr>
 
+it's debatable to use this: `ThemeProvider`, because need to import this, then create `const theme = {...someDefaultStyle = "#111"...}`  then warp all page in `<ThemeProvider theme={theme}>` then use it in styles css as `background: ${props => props.theme.someDefaultStyle}`...
+
+Why not just use this:
+
+ `const defaultTheme = {...someDefaultStyle = "#111"...}`
+and use it in styles css
+`background: ${defaultTheme.someDefaultStyle}`
 <hr>
+
+Again, what a point to use `css` from `styles` and rewrite standartstyles methods? 
+A specific task may be needed?
+But not in this case
+
+
+<hr>
+
+  Call prop in element:
+  `<Footer color="someColor">`
+
+Then use it in styles with `css` from `styles`:
+
+
+ `${props => props.color && css'
+    color: ${props => props.theme[props.color]}'
+  }`
+
+ (I used in this case "'" instead "`")
+
+Or without using any `css` and  `ThemeProvider` from `styles`:
+
+ `background-color: ${props => defaultTheme[props.color]};`
+
+Last option is much easier! 
+
+I did not find a way to apply first this option.
+
+
+<hr>
+
+
 
 
 # P.S
