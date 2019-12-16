@@ -417,7 +417,11 @@ I did not find a way to apply first this option.
 
 <hr>
 
+HOW TO DEPLOY WITH VSCode?
 
+install extention `SFTP` and edit config file with `ctrl + shift + p` and write `SFTP:config`, enter the data of hosting and just deploy build app by click the folder by right mouse click.
+
+<hr>
 
 
 # P.S
