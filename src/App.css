@@ -13,3 +13,12 @@ a {
   color: #333;
   text-decoration: none;
 }
+
+.link-block-hover:hover{
+  text-decoration: none;
+  color: rgb(158, 109, 45);
+}
+
+.link-block-hover:hover div{
+  box-shadow: 1px 1px 1px red;
+}

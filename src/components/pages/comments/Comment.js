@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider, css } from 'styled-components';
 
+
 const theme = {
   primary: '#150700',
   secondary: '#CC0',
@@ -22,19 +23,23 @@ export default function Comment(props) {
   // HTML ============
 
   return (
+
     <ThemeProvider theme={theme}>
-      <CommentsBlock>
-        <Title elemId={id} >
-          {id}) {name}
-        </Title>
-        <Body>
-          {body}
-        </Body>
-        <Footer color="someDiff">
-          Commentator: {email}
-        </Footer>
-      </CommentsBlock>
-    </ThemeProvider>
+  
+        <CommentsBlock>
+          <Title elemId={id} >
+            {id}) {name}
+          </Title>
+          <Body>
+            {body}
+          </Body>
+          <Footer color="someDiff">
+            Commentator: {email}
+          </Footer>
+        </CommentsBlock>
+    
+    </ThemeProvider >
+
   )
 }
 

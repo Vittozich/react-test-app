@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function Header() {
+export default function Header(props) {
   return (
     <header style={headerStyle}>
       <h1>Мои задачи</h1>
@@ -10,6 +10,10 @@ export default function Header() {
       <Link style={linkStyle}  to="/about">Описание</Link>
       {' | '}
       <Link style={linkStyle}  to="/comments">Комментарии</Link>
+      <br/>
+      {props.lastReadCommentName !== '' ? 
+      'Последний прочтенный комментарий : '+ props.lastReadCommentName:
+      ''} 
     </header>
   )
 }

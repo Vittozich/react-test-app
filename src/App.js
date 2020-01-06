@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Header from './components/layouts/Header';
-import Todos from './components/Todos';
-import AddTodo from './components/AddTodo';
-import About from './components/pages/About';
-import Comments from './components/pages/comments/Index';
 import axios from 'axios';
 // import uuid from 'uuid'
-import 'bootstrap/dist/css/bootstrap.min.css';
 
+//styles
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
+//pages
+import Comments from './components/pages/comments/CommentsPage';
+import Comment from './components/pages/comments/CommentPage';
+import About from './components/pages/About';
+
+//layouts
+import Header from './components/layouts/Header';
+
+//components
+import Todos from './components/Todos';
+import AddTodo from './components/AddTodo';
 
 function App() {
 
   let [todos, setTodos] = useState([]);
+  let [lastReadCommentName, setLastReadCommentName] = useState('');
 
   /*
   At first I used use useEffect, but when I click the buttons - changes always reload
@@ -23,7 +32,7 @@ function App() {
 
   useState(() => {
     axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
-      .then(res => setTodos(res.data))   
+      .then(res => setTodos(res.data))
   })
 
   // Toggle Complete
@@ -54,11 +63,11 @@ function App() {
   }
 
   return (
-    
+
     <Router>
       <div className="App">
         <div className="container">
-          <Header />
+          <Header lastReadCommentName={lastReadCommentName} />
           <Route exact path="/" render={() => (
             <React.Fragment>
               <AddTodo addTodo={addTodo} />
@@ -66,8 +75,12 @@ function App() {
                 delTodo={delTodo} />
             </React.Fragment>
           )} />
-          <Route path="/about" render={() => <About  message="this is prop" />} />
-          <Route path="/comments" component={Comments} />
+          <Route path="/about" render={() => <About message="this is prop" />} />
+          <Route exact path="/comments" component={Comments} />
+
+          <Route exact path="/comments/:id" render={({ match }) =>
+            <Comment id={match.params.id} setLastReadCommentName={setLastReadCommentName} />}
+          />
         </div>
       </div>
     </Router>

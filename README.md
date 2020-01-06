@@ -448,11 +448,18 @@ In `App.js` where called  `Router`
 
 <hr>
 
+When we use `/comments/id` inside `/comments` need to use `exact` before `path` in `Route` in `App.js`
+
+When need to pass some props with route page params need to use `match` as argument arrow function and call this param as prop `id={match.params.id}` like in example bellow and in code:
+
+`<Route exact path="/comments/:id" render={({ match }) =>
+ <Comment id={match.params.id} setLastReadCommentName={setLastReadCommentName} />}
+ />`
+
+As You see, `setLastReadCommentName` this is prop function which pass inside `Route` component.  
+
 
 <hr>
-
-
-
 
 # P.S
 
