@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 function AddTodo(props) {
@@ -25,8 +25,8 @@ function AddTodo(props) {
       />
       <input type="submit"
         value="Submit"
-        className="btn"
-        style={{ flex: '1' }}
+        className="btn btn-success"
+        style={{ flex: '1', borderRadius:'0px' }}
       />
     </form>
   )

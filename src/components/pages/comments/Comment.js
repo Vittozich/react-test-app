@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeProvider, css } from 'styled-components'
+import styled, { ThemeProvider, css } from 'styled-components';
 
 const theme = {
   primary: '#150700',

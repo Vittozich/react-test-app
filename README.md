@@ -423,6 +423,29 @@ install extention `SFTP` and edit config file with `ctrl + shift + p` and write 
 
 <hr>
 
+### `JANUARY 2020`
+
+# Bootstrap
+
+
+## Install and using bootstrap:
+
+    npm install react-bootstrap bootstrap
+
+in code:
+`import 'bootstrap/dist/css/bootstrap.min.css';`
+
+When we import css file in one component, it is called for all components in the page `App.js`
+
+Not necessary call css file in each component.
+
+<hr>
+
+
+<hr>
+
+
+
 
 # P.S
 
