@@ -441,6 +441,13 @@ Not necessary call css file in each component.
 
 <hr>
 
+# Pass props when use `Router`
+
+I have example page `About`, and I can send props inside this page.
+In `App.js` where called  `Router`
+
+<hr>
+
 
 <hr>
 

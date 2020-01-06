@@ -66,7 +66,7 @@ function App() {
                 delTodo={delTodo} />
             </React.Fragment>
           )} />
-          <Route path="/about" component={About} />
+          <Route path="/about" render={() => <About  message="this is prop" />} />
           <Route path="/comments" component={Comments} />
         </div>
       </div>
