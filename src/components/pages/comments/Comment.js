@@ -25,28 +25,28 @@ export default function Comment(props) {
   return (
 
     <ThemeProvider theme={theme}>
-  
-        <CommentsBlock>
-          <Title elemId={id} >
-            {id}) {name}
-          </Title>
-          <Body>
-            {body}
-          </Body>
-          <Footer color="someDiff">
-            Commentator: {email}
-          </Footer>
-        </CommentsBlock>
-    
+
+      <CommentsBlock>
+        <Title elemId={id} >
+          {id}) {name}
+        </Title>
+        <Body>
+          {body}
+        </Body>
+        <Footer color="someDiff">
+          Commentator: {email}
+        </Footer>
+      </CommentsBlock>
+
     </ThemeProvider >
 
   )
 }
 
-// Validation ============
+// Validation ============ can be array or object
 
 Comment.propTypes = {
-  comment: PropTypes.object.isRequired,
+  comment: PropTypes.any.isRequired,
 }
 
 // Styled ============

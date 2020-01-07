@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 //components
 import Comment from './Comment';
@@ -27,3 +28,10 @@ export default function CommentPage(props) {
         </div>
     )
 }
+
+// Validation ============ can be array or object
+
+CommentPage.propTypes = {
+    id: PropTypes.string.isRequired,
+    setLastReadCommentName: PropTypes.func.isRequired,
+  }

@@ -1,7 +1,8 @@
 import React from 'react';
-import TodoItem from './TodoItems';
 import PropTypes from 'prop-types';
 
+//components
+import TodoItem from './TodoItems';
 
 function Todos(props) {
   return props.todos.map((todo) => (

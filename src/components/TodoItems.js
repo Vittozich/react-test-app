@@ -19,13 +19,14 @@ export default function TodoItems(props) {
 
   return (
     <div style={getStyle()}>
-      <div class="custom-control custom-checkbox" style={{flex: 12}}>
+      <div className="custom-control custom-checkbox" style={{flex: 12}}>
         <input className="custom-control-input" type="checkbox" onChange={props.markComplete.bind(this, id)} id={id + "checkbox"} /> {' '}
-        <label style={{ textDecoration: props.todo.completed ? 'line-through' : 'none'}} class="custom-control-label" for={id + "checkbox"}>{title}</label>
-
+        <label 
+          style={{ textDecoration: props.todo.completed ? 'line-through' : 'none'}} 
+          className="custom-control-label" 
+          htmlFor={id + "checkbox"}>{title}
+        </label>
       </div>
-
-
       <Button onClick={props.delTodo.bind(this, id)} >x</Button>
     </div>
   )
