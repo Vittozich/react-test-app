@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 export default function Header(props) {
   return (
     <header style={headerStyle}>
-      <h1>Мои задачи</h1>
+      <h1>User id: {props.guest_user_id}</h1>
       <Link style={linkStyle} to="/">Главная</Link>
       {' | '}
-      <Link style={linkStyle}  to="/about">Описание</Link>
+      <Link style={linkStyle} to="/about">Описание</Link>
       {' | '}
-      <Link style={linkStyle}  to="/comments">Комментарии</Link>
-      <br/>
-      {props.lastReadCommentName !== '' ? 
-      'Последний прочтенный комментарий : '+ props.lastReadCommentName:
-      ''} 
+      <Link style={linkStyle} to="/comments">Комментарии</Link>
+      <br />
+      {props.lastReadCommentName !== '' ?
+        'Последний прочтенный комментарий : ' + props.lastReadCommentName :
+        ''}
     </header>
   )
 }

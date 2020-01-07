@@ -461,6 +461,26 @@ As You see, `setLastReadCommentName` this is prop function which pass inside `Ro
 
 <hr>
 
+# Save some data in local storage
+
+This just JavaScript, not React.
+
+`localStorage.getItem('guest_user_id');` - this is get variable named as `guest_user_id` 
+
+ `localStorage.setItem('guest_user_id', generate_string);` - this is set variable named as `guest_user_id` with some string `generate_string`
+
+ and I generate this string like that:
+ `generate_string = Math.random().toString(36).substring(2, 33) + Math.random().toString(36).substring(2, 33);`
+
+
+`localStorage.removeItem('guest_user_id');` -  remove item if this is necessary.
+
+<hr>
+<hr>
+<hr>
+<hr>
+
+
 # P.S
 
 Документ написан на английском, но с русским акцентом.

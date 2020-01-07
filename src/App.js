@@ -19,10 +19,15 @@ import Header from './components/layouts/Header';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 
+//hooks
+import { useGuestUserId } from './hooks/localStorage'
+
 function App() {
 
   let [todos, setTodos] = useState([]);
   let [lastReadCommentName, setLastReadCommentName] = useState('');
+  let guest_user_id = useGuestUserId();
+
 
   /*
   At first I used use useEffect, but when I click the buttons - changes always reload
@@ -67,7 +72,10 @@ function App() {
     <Router>
       <div className="App">
         <div className="container">
-          <Header lastReadCommentName={lastReadCommentName} />
+          <Header
+           lastReadCommentName={lastReadCommentName} 
+           guest_user_id={guest_user_id}
+          />
           <Route exact path="/" render={() => (
             <React.Fragment>
               <AddTodo addTodo={addTodo} />
