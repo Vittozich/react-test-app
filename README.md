@@ -501,6 +501,8 @@ If create a hook wich warm up with `useEffect` with `async` function - all async
 
 To good work `async` functions need call that finction in `useEffect`. But not just create a hook wich contains inside same structure. 
 
+And to do create my own hook do not need to just replace existing simple function.
+
 <hr>
 <hr>
 <hr>

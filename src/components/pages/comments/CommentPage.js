@@ -1,27 +1,17 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 //components
 import Comment from './Comment';
 
-export default function CommentPage(props) {
-
-    const id = props.id;
-
-
-    let [comment, setComment] = useState([]);
-
-    useState(() => {
-        axios.get('https://jsonplaceholder.typicode.com/comments/' + id)
-            .then(res => {
-                setComment(res.data);
-                props.setLastReadCommentName(res.data.name);
-            })
-    })
+//hooks
+import { useComment } from './CommentHooks.js';
 
 
-    
+export default function CommentPage({id ,setLastReadCommentName}) {  
+
+    let comment = useComment(id);
+    setLastReadCommentName(comment.name);
 
     return (
         <div>
@@ -37,4 +27,4 @@ export default function CommentPage(props) {
 CommentPage.propTypes = {
     id: PropTypes.string.isRequired,
     setLastReadCommentName: PropTypes.func.isRequired,
-  }
+}
