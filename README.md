@@ -503,6 +503,8 @@ To good work `async` functions need call that finction in `useEffect`. But not j
 
 And to do create my own hook do not need to just replace existing simple function.
 
+Simple hook to make cleaner code - it is better way. `CommentHooks.js`
+
 <hr>
 <hr>
 <hr>

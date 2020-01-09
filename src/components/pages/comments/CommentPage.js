@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//components
+//this components
 import Comment from './Comment';
 
-//hooks
+//this hooks
 import { useComment } from './CommentHooks.js';
 
 

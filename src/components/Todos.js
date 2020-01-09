@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//components
+//this components
 import TodoItem from './TodoItems';
 
 function Todos(props) {

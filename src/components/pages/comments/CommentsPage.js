@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
-//components
+//this components
 import Comments from './Comments';
 
 export default function CommentsPage() {

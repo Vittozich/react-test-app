@@ -18,7 +18,6 @@ export default function Comments(props) {
   ));
 }
 
-
 Comments.propTypes = {
   comment: PropTypes.object 
 }

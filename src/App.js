@@ -15,12 +15,12 @@ import About from './components/pages/About';
 //layouts
 import Header from './components/layouts/Header';
 
-//components
+//this components
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 
-//hooks
-import { useGuestUserId } from './hooks/localStorage'
+//this hooks
+import { useGuestUserId } from './hooks/localStorage';
 
 function App() {
 

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider, css } from 'styled-components';
 
-
 const theme = {
   primary: '#150700',
   secondary: '#CC0',
@@ -15,7 +14,6 @@ const defaultTheme = {
   someDiff: 'red',
 }
 
-
 export default function Comment(props) {
 
   let { id, name, email, body } = props.comment
@@ -23,7 +21,6 @@ export default function Comment(props) {
   // HTML ============
 
   return (
-
     <ThemeProvider theme={theme}>
 
       <CommentsBlock>
@@ -39,7 +36,6 @@ export default function Comment(props) {
       </CommentsBlock>
 
     </ThemeProvider >
-
   )
 }
 
