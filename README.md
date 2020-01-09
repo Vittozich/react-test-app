@@ -476,10 +476,33 @@ This just JavaScript, not React.
 `localStorage.removeItem('guest_user_id');` -  remove item if this is necessary.
 
 <hr>
-<hr>
-<hr>
-<hr>
 
+# Educate with [Chantastic](https://twitter.com/chantastic/status/1201594041378496512)
+
+## What I can get from this lessons?
+
+1. We can use different methods to get props in component:
+
+`function SomeComponent() {... `<---this is without props 
+
+`function SomeComponent(props) {... `<---this is with props 
+
+`function SomeComponent({name, ...props}) {... <---this is with the prop and props  and lets stop with that:`
+
+Now we can use just `name` instead of `props.name` and we can use other props in some tags like that: `<H1 {...props}>`. Example of this props is `class='someName'`;
+
+
+`function SomeComponent({name, secondName}) {... `<---this is with only 2 props
+
+`function SomeComponent({name : newName, secondName : newSecondName}) {... `<---this is with only 2 props and use rename - second argument is new, first - is prop
+
+
+
+
+<hr>
+<hr>
+<hr>
+ 
 
 # P.S
 

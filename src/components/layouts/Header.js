@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Header(props) {
+export default function Header({ guest_user_id : us_i, lastReadCommentName : ln}) {
   return (
     <header style={headerStyle}>
-      <h1>User id: {props.guest_user_id}</h1>
+      <h1>User id: {us_i}</h1>
       <Link style={linkStyle} to="/">Главная</Link>
       {' | '}
       <Link style={linkStyle} to="/about">Описание</Link>
       {' | '}
       <Link style={linkStyle} to="/comments">Комментарии</Link>
       <br />
-      {props.lastReadCommentName !== '' ?
-        'Последний прочтенный комментарий : ' + props.lastReadCommentName :
+      {ln !== '' ?
+        'Последний прочтенный комментарий : ' + ln :
         ''}
     </header>
   )
