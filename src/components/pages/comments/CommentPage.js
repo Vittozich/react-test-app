@@ -20,6 +20,9 @@ export default function CommentPage(props) {
             })
     })
 
+
+    
+
     return (
         <div>
             <Comment key={comment.id}

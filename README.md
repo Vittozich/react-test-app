@@ -491,11 +491,9 @@ This just JavaScript, not React.
 
 Now we can use just `name` instead of `props.name` and we can use other props in some tags like that: `<H1 {...props}>`. Example of this props is `class='someName'`;
 
-
 `function SomeComponent({name, secondName}) {... `<---this is with only 2 props
 
 `function SomeComponent({name : newName, secondName : newSecondName}) {... `<---this is with only 2 props and use rename - second argument is new, first - is prop
-
 
 
 
