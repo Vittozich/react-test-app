@@ -495,7 +495,11 @@ Now we can use just `name` instead of `props.name` and we can use other props in
 
 `function SomeComponent({name : newName, secondName : newSecondName}) {... `<---this is with only 2 props and use rename - second argument is new, first - is prop
 
+2. Try to create my own hook:
 
+If create a hook wich warm up with `useEffect` with `async` function - all asynchrony will be broken, pages start flicker, again. (I use it in `CommentsPage`).
+
+To good work `async` functions need call that finction in `useEffect`. But not just create a hook wich contains inside same structure. 
 
 <hr>
 <hr>

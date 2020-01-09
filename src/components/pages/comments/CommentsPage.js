@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 //components
 import Comments from './Comments';
 
-//hooks
-import { useComments } from './CommentsHooks.js'
-
 export default function CommentsPage() {
 
-
+  let [comments, setComments] = useState([]);
   let [startPage, setStartPage] = useState(0);
   let [pageLimit] = useState(10);
 
-  let comments = useComments(startPage, pageLimit);
+  const fetchData = async () => {
+    await axios.get('https://jsonplaceholder.typicode.com/comments?_start=' + startPage + '&_limit=' + pageLimit)
+      .then(res => setComments(res.data))
+  };
+
+  useEffect(() => { 
+    fetchData();
+  }, [startPage, pageLimit]);
 
   function pageScrol(direction) {
     if (direction === 'next') {
@@ -32,8 +37,8 @@ export default function CommentsPage() {
   return (
     <div>
       <Buttons>
-        <Button onClick={pageScrol.bind(this, 'prev')}>PREV</Button>
-        <Button onClick={pageScrol.bind(this, 'next')}>NEXT</Button>
+        <Button  onClick={pageScrol.bind(this, 'prev')}>PREV</Button>
+        <Button  onClick={pageScrol.bind(this, 'next')}>NEXT</Button>
       </Buttons>
       <Comments comments={comments} />
     </div>
