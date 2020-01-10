@@ -14,7 +14,7 @@ const defaultTheme = {
   someDiff: 'red',
 }
 
-export default function Comment(props) {
+export default function Comment( {full = false, className,  ...props}) {
 
   let { id, name, email, body } = props.comment
 
@@ -23,11 +23,11 @@ export default function Comment(props) {
   return (
     <ThemeProvider theme={theme}>
 
-      <CommentsBlock>
+      <CommentsBlock className={["my-class-name",className].join(" ")}>
         <Title elemId={id} >
           {id}) {name}
         </Title>
-        <Body>
+        <Body full={full}>
           {body}
         </Body>
         <Footer color="someDiff">
@@ -60,7 +60,10 @@ const Title = styled.div`
 
 const Body = styled.div`
   padding: 5px;
+  min-height: ${props => (props.full ? '200px' : '50px')};
 `
+
+
 
 const Footer = styled.div`
   /* background-color: #150700; */

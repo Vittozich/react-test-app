@@ -9,8 +9,8 @@ export default function Comments(props) {
 
   return props.comments.map((comment) => (
     <div key={comment.id}>
-      <Link to={'/comments/' + comment.id} className="link-block-hover">
-        <Comment key={comment.id}
+      <Link to={'/comments/' + comment.id} className="link-hover">
+        <Comment  key={comment.id} className="link-block-hover"
           comment={comment}
         />
       </Link>

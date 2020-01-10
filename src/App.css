@@ -14,11 +14,11 @@ a {
   text-decoration: none;
 }
 
-.link-block-hover:hover{
+.link-hover:hover{
   text-decoration: none;
   color: rgb(158, 109, 45);
 }
 
-.link-block-hover:hover div{
+.link-block-hover:hover{
   box-shadow: 1px 1px 1px red;
 }

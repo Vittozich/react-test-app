@@ -15,7 +15,7 @@ export default function CommentPage({id ,setLastReadCommentName}) {
 
     return (
         <div>
-            <Comment key={comment.id}
+            <Comment full={true} key={comment.id}
                 comment={comment}
             />
         </div>

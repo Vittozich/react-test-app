@@ -495,6 +495,9 @@ Now we can use just `name` instead of `props.name` and we can use other props in
 
 `function SomeComponent({name : newName, secondName : newSecondName}) {... `<---this is with only 2 props and use rename - second argument is new, first - is prop
 
+
+`function SomeComponent({name : newName = false}) {... `<---this is with only one prop, which is renamed, but this prop have a default value as `false`; same thing -`function SomeComponent({name = false}) {... ` but without rename;
+
 2. Try to create my own hook (2 times):
 
 Simple hook to make cleaner code - it is better way. `CommentHooks.js` as `useComment`;
@@ -509,12 +512,16 @@ Complicated hook with `useEffect` will be work correctly if you track value, whi
 
   Now, after that manipulations I have only one call `axios` in `CommentHooks.js` instead of two calls `axios` in `CommentsPage` and `CommentPage`, because they will be removed, and added call `import { someFunction } from './CommentHooks.js';`
 
+3. inherited class merge with component class:
+
+`className={["my-class-name",className].join(" ")}` or `className={["my-class-name",props.className].join(" ")}`
+
+
+
 
 <hr>
 <hr>
 <hr>
- 
-
 
 # P.S
 
