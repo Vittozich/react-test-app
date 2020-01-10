@@ -495,23 +495,35 @@ Now we can use just `name` instead of `props.name` and we can use other props in
 
 `function SomeComponent({name : newName, secondName : newSecondName}) {... `<---this is with only 2 props and use rename - second argument is new, first - is prop
 
-2. Try to create my own hook:
+2. Try to create my own hook (2 times):
 
-If create a hook wich warm up with `useEffect` with `async` function - all asynchrony will be broken, pages start flicker, again. (I use it in `CommentsPage`).
+Simple hook to make cleaner code - it is better way. `CommentHooks.js` as `useComment`;
 
-To good work `async` functions need call that finction in `useEffect`. But not just create a hook wich contains inside same structure. 
+Complicated hook with `useEffect` will be work correctly if you track value, which changing like:
 
-And to do create my own hook do not need to just replace existing simple function.
+  `useEffect(() => { 
+    fetchData();
+  }, [startPage, pageLimit]);`
 
-Simple hook to make cleaner code - it is better way. `CommentHooks.js`
+  but if we will not track `[startPage, pageLimit]` page will be flicker. 
+
+  Now, after that manipulations I have only one call `axios` in `CommentHooks.js` instead of two calls `axios` in `CommentsPage` and `CommentPage`, because they will be removed, and added call `import { someFunction } from './CommentHooks.js';`
+
 
 <hr>
 <hr>
 <hr>
  
 
+
 # P.S
 
+
+## legend
+
+When I write like `some....` or `someComponent` that meens it is a template of any function, component or variable.
+
+<hr>
 Документ написан на английском, но с русским акцентом.
 
 Написание этой `обучающей документации` на английском тоже является частью изучения фреймворка. 
