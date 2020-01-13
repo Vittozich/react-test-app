@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
 // import uuid from 'uuid'
@@ -29,7 +29,13 @@ import { connection_url } from './constants/connections.js';
 function App() {
 
   let [todos, setTodos] = useState([]);
-  let [todo, setTodo] = useState({});
+  let [todo, dispatchTodo] = useReducer((state, action) =>
+  {
+    if (action.type === "reselect_todo") return action.payload;
+    throw new Error();
+  }, {});
+
+
   let [lastReadCommentName, setLastReadCommentName] = useState('');
   let guest_user_id = useGuestUserId();
 
@@ -74,7 +80,8 @@ function App() {
   }
 
   const selectTodo = (todo_id) => {
-    axios.get(connection_url + 'todos/' + todo_id).then(res => setTodo(res.data));
+    axios.get(connection_url + 'todos/' + todo_id)
+    .then(res => dispatchTodo({ type: "reselect_todo", payload: res.data }))
   }
 
   return (

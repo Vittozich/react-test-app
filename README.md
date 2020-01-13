@@ -540,7 +540,19 @@ Complicated hook with `useEffect` will be work correctly if you track value, whi
 
 `className={["my-class-name",className].join(" ")}` or `className={["my-class-name",props.className].join(" ")}`
 
+4. `useReducer` :
 
+ `let [someVariable, dispatchSome] = useReducer((state, action) => {...someFunction...}, ...someDefaultState...)`
+ 
+  instead of
+  
+ `let [someVariable, setSomeVariable] = useState(...someDefaultState...)`
+   
+ where `state` this is old state of `someVariable` and `dispatch` is some function whitch return `action`'s of `useReducer`. 
+
+ where `action` is variables in `someFunction` in  `useReducer` which are call like `action.type` .
+
+ This is complicated example, but maybe this will be need in future. 
 
 
 <hr>
