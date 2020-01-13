@@ -554,6 +554,12 @@ Complicated hook with `useEffect` will be work correctly if you track value, whi
 
  This is complicated example, but maybe this will be need in future. 
 
+ `axios` doesn't work with dispatch functions!!!
+
+    ReferenceError: Cannot access 'dispatchTodo' before initialization
+
+first try - doesn't work
+
 
 <hr>
 <hr>
