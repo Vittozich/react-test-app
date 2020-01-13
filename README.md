@@ -477,6 +477,30 @@ This just JavaScript, not React.
 
 <hr>
 
+
+# Use constants from connections
+
+I created folder `constants` with `connections` and `styles` constants which are I previously declarete in component, now this some variables are can change in one place. 
+
+In file i need to: 
+
+ `export const someObject = {....`
+ or
+` export const someVariable = ....`
+
+ And now I can import them in components (live example):
+
+` //this constaint`
+
+`import { theme, defaultTheme }  from '../../../constants/styles.js';`
+
+Note: with end `.js` because this is not `React` components, but just `js` files.
+
+
+<hr>
+
+
+
 # Educate with [Chantastic](https://twitter.com/chantastic/status/1201594041378496512)
 
 ## What I can get from this lessons?

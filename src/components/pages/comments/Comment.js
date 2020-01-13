@@ -2,17 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider, css } from 'styled-components';
 
-const theme = {
-  primary: '#150700',
-  secondary: '#CC0',
-  someDiff: 'green',
-}
-
-const defaultTheme = {
-  primary: '#FFF',
-  secondary: '#000',
-  someDiff: 'red',
-}
+//this constaint
+import { theme, defaultTheme }  from '../../../constants/styles.js';
 
 export default function Comment( {full = false, className,  ...props}) {
 

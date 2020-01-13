@@ -18,13 +18,18 @@ import Header from './components/layouts/Header';
 //this components
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
+import SecetedTodo from './components/SelectedTodo';
 
 //this hooks
 import { useGuestUserId } from './hooks/localStorage';
 
+//this constaint
+import { connection_url } from './constants/connections.js';
+
 function App() {
 
   let [todos, setTodos] = useState([]);
+  let [todo, setTodo] = useState({});
   let [lastReadCommentName, setLastReadCommentName] = useState('');
   let guest_user_id = useGuestUserId();
 
@@ -36,9 +41,12 @@ function App() {
   */
 
   useState(() => {
-    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+    axios.get(connection_url + 'todos?_limit=10')
       .then(res => setTodos(res.data))
   })
+
+  
+  // Methods ============
 
   // Toggle Complete
   const markComplete = (id) => {
@@ -53,18 +61,20 @@ function App() {
 
   // Delete Todo
   const delTodo = (id) => {
-    axios.delete('https://jsonplaceholder.typicode.com/todos/' + { id })
+    axios.delete(connection_url + 'todos/' + { id })
       .then(res => setTodos([...todos.filter(todo => todo.id !== id)]));
-
   }
 
   //Add Todo
   const addTodo = (title) => {
-    axios.post('https://jsonplaceholder.typicode.com/todos', {
+    axios.post(connection_url + 'todos', {
       title,
       completed: false
     }).then(res => setTodos([...todos, res.data]));
+  }
 
+  const selectTodo = (todo_id) => {
+    axios.get(connection_url + 'todos/' + todo_id).then(res => setTodo(res.data));
   }
 
   return (
@@ -79,8 +89,9 @@ function App() {
           <Route exact path="/" render={() => (
             <React.Fragment>
               <AddTodo addTodo={addTodo} />
+              <SecetedTodo todo={todo} />
               <Todos todos={todos} markComplete={markComplete}
-                delTodo={delTodo} />
+                delTodo={delTodo} selectTodo={selectTodo} />
             </React.Fragment>
           )} />
           <Route path="/about" render={() => <About message="this is prop" />} />

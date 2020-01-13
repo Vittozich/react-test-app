@@ -7,7 +7,7 @@ import TodoItem from './TodoItems';
 function Todos(props) {
   return props.todos.map((todo) => (
     <TodoItem key={todo.id} todo={todo} markComplete={props.markComplete}
-      delTodo={props.delTodo}
+      delTodo={props.delTodo} selectTodo={props.selectTodo}
     />
   ));
 }
