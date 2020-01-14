@@ -558,7 +558,9 @@ Complicated hook with `useEffect` will be work correctly if you track value, whi
 
     ReferenceError: Cannot access 'dispatchTodo' before initialization
 
-first try - doesn't work
+To more complicated need to call `axios` with `async` and `await` parameters. 
+
+function `getTodo` in this commit is higer than `useReducer` because else it calls an error - need to declarate function... this is strange...
 
 
 <hr>

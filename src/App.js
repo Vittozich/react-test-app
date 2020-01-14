@@ -28,17 +28,32 @@ import { connection_url } from './constants/connections.js';
 
 function App() {
 
-  let [todos, setTodos] = useState([]);
-  let [todo, dispatchTodo] = useReducer((state, action) =>
-  {
-    if (action.type === "reselect_todo") return action.payload;
-    throw new Error();
-  }, {});
+  const getTodo = async (todo_id) => {
+    let res = await axios.get(connection_url + 'todos/' + todo_id)
+    if (res.status === 200) {
+      return res.data;
+    } else {
+      return Promise.reject();
+    }
+  }
 
+  let [todos, setTodos] = useState([]);
+  let [{ todo }, dispatchTodo] = useReducer(
+    (state, action) => {
+      if (action.type === "fetch_and_replace_todo") {
+        getTodo(action.payload)
+          .then(res => dispatchTodo({ type: "reselect_todo", payload: res }))
+        return action.payload;
+      }
+      // self call 
+      if (action.type === "reselect_todo") {
+        return { ...state, todo: action.payload };
+      }
+      throw new Error();
+    }, { todo: {} });
 
   let [lastReadCommentName, setLastReadCommentName] = useState('');
   let guest_user_id = useGuestUserId();
-
 
   /*
   At first I used use useEffect, but when I click the buttons - changes always reload
@@ -51,7 +66,6 @@ function App() {
       .then(res => setTodos(res.data))
   })
 
-  
   // Methods ============
 
   // Toggle Complete
@@ -79,10 +93,15 @@ function App() {
     }).then(res => setTodos([...todos, res.data]));
   }
 
+  //Select todo function when click clickSelectTodo, which call function in useRender
   const selectTodo = (todo_id) => {
-    axios.get(connection_url + 'todos/' + todo_id)
-    .then(res => dispatchTodo({ type: "reselect_todo", payload: res.data }))
+    dispatchTodo({
+      type: "fetch_and_replace_todo",
+      payload: todo_id
+    })
   }
+
+
 
   return (
 
@@ -90,15 +109,23 @@ function App() {
       <div className="App">
         <div className="container">
           <Header
-           lastReadCommentName={lastReadCommentName} 
-           guest_user_id={guest_user_id}
+            lastReadCommentName={lastReadCommentName}
+            guest_user_id={guest_user_id}
           />
           <Route exact path="/" render={() => (
             <React.Fragment>
               <AddTodo addTodo={addTodo} />
-              <SecetedTodo todo={todo} />
-              <Todos todos={todos} markComplete={markComplete}
-                delTodo={delTodo} selectTodo={selectTodo} />
+              {todo ?
+                <SecetedTodo todo={todo} />
+                :
+                <SecetedTodo todo={{ title: 'loading...' }} />
+              }
+              <Todos
+                todos={todos}
+                markComplete={markComplete}
+                delTodo={delTodo}
+                selectTodo={selectTodo}
+              />
             </React.Fragment>
           )} />
           <Route path="/about" render={() => <About message="this is prop" />} />
