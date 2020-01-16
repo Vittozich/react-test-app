@@ -595,6 +595,13 @@ Note: with end `.js` because this is not `React` components, but just `js` files
 
 <hr>
 <hr>
+
+Strange errors:  if calling function is outside `useEffect`:
+
+        React Hook useEffect has a missing dependency: 'fetchData'. Either include it or remove the dependency array  react-hooks/exhaustive-depse it or remove the dependency array  react-hooks/exhaustive-deps
+
+but if it inside, all is OK. But why is `Chantastic` use it outside...
+
 <hr>
 
 # P.S
