@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import TodoContext from '../contexts/TodoContext';
 
-export default function SelectedTodo({ todo }) {
+export default function SelectedTodo() {
+
+  let todo = useContext(TodoContext);
+
   return (
     <div className="col-12 p-0">
       <SelectedArea>

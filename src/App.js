@@ -23,8 +23,11 @@ import SecetedTodo from './components/SelectedTodo';
 //this hooks
 import { useGuestUserId } from './hooks/localStorage';
 
-//this constaint
+//this constants
 import { connection_url } from './constants/connections.js';
+
+//this contexts
+import TodoContext from './contexts/TodoContext';
 
 function App() {
 
@@ -50,7 +53,7 @@ function App() {
         return { ...state, todo: action.payload };
       }
       throw new Error();
-    }, { todo: {} });
+    }, {});
 
   let [lastReadCommentName, setLastReadCommentName] = useState('');
   let guest_user_id = useGuestUserId();
@@ -115,11 +118,17 @@ function App() {
           <Route exact path="/" render={() => (
             <React.Fragment>
               <AddTodo addTodo={addTodo} />
+
               {todo ?
-                <SecetedTodo todo={todo} />
-                :
-                <SecetedTodo todo={{ title: 'loading...' }} />
+              <TodoContext.Provider value={todo}>
+                  <SecetedTodo />
+              </TodoContext.Provider>
+              :
+              <TodoContext.Provider value={{title: '♪'}}>
+                  <SecetedTodo />
+              </TodoContext.Provider>
               }
+
               <Todos
                 todos={todos}
                 markComplete={markComplete}

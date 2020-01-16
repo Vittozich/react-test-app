@@ -507,61 +507,91 @@ Note: with end `.js` because this is not `React` components, but just `js` files
 
 1. We can use different methods to get props in component:
 
-`function SomeComponent() {... `<---this is without props 
+    `function SomeComponent() {... `<---this is without props 
 
-`function SomeComponent(props) {... `<---this is with props 
+    `function SomeComponent(props) {... `<---this is with props 
 
-`function SomeComponent({name, ...props}) {... <---this is with the prop and props  and lets stop with that:`
+    `function SomeComponent({name, ...props}) {... <---this is with the prop and props  and lets stop with that:`
 
-Now we can use just `name` instead of `props.name` and we can use other props in some tags like that: `<H1 {...props}>`. Example of this props is `class='someName'`;
+    Now we can use just `name` instead of `props.name` and we can use other props in some tags like that: `<H1 {...props}>`. Example of this props is `class='someName'`;
 
-`function SomeComponent({name, secondName}) {... `<---this is with only 2 props
+    `function SomeComponent({name, secondName}) {... `<---this is with only 2 props
 
-`function SomeComponent({name : newName, secondName : newSecondName}) {... `<---this is with only 2 props and use rename - second argument is new, first - is prop
+    `function SomeComponent({name : newName, secondName : newSecondName}) {... `<---this is with only 2 props and use rename - second argument is new, first - is prop
 
 
-`function SomeComponent({name : newName = false}) {... `<---this is with only one prop, which is renamed, but this prop have a default value as `false`; same thing -`function SomeComponent({name = false}) {... ` but without rename;
+    `function SomeComponent({name : newName = false}) {... `<---this is with only one prop, which is renamed, but this prop have a default value as `false`; same thing -`function SomeComponent({name = false}) {... ` but without rename;
 
 2. Try to create my own hook (2 times):
 
-Simple hook to make cleaner code - it is better way. `CommentHooks.js` as `useComment`;
+    Simple hook to make cleaner code - it is better way. `CommentHooks.js` as `useComment`;
 
-Complicated hook with `useEffect` will be work correctly if you track value, which changing like:
+    Complicated hook with `useEffect` will be work correctly if you track value, which changing like:
 
-  `useEffect(() => { 
-    fetchData();
-  }, [startPage, pageLimit]);`
+    `useEffect(() => { 
+        fetchData();
+    }, [startPage, pageLimit]);`
 
-  but if we will not track `[startPage, pageLimit]` page will be flicker. 
+    but if we will not track `[startPage, pageLimit]` page will be flicker. 
 
-  Now, after that manipulations I have only one call `axios` in `CommentHooks.js` instead of two calls `axios` in `CommentsPage` and `CommentPage`, because they will be removed, and added call `import { someFunction } from './CommentHooks.js';`
+    Now, after that manipulations I have only one call `axios` in `CommentHooks.js` instead of two calls `axios` in `CommentsPage` and `CommentPage`, because they will be removed, and added call `import { someFunction } from './CommentHooks.js';`
 
 3. inherited class merge with component class:
 
-`className={["my-class-name",className].join(" ")}` or `className={["my-class-name",props.className].join(" ")}`
+    `className={["my-class-name",className].join(" ")}` or `className={["my-class-name",props.className].join(" ")}`
 
 4. `useReducer` :
 
- `let [someVariable, dispatchSome] = useReducer((state, action) => {...someFunction...}, ...someDefaultState...)`
- 
-  instead of
-  
- `let [someVariable, setSomeVariable] = useState(...someDefaultState...)`
-   
- where `state` this is old state of `someVariable` and `dispatch` is some function whitch return `action`'s of `useReducer`. 
+    `let [someVariable, dispatchSome] = useReducer((state, action) => {...someFunction...}, ...someDefaultState...)`
+    
+    instead of
+    
+    `let [someVariable, setSomeVariable] = useState(...someDefaultState...)`
+    
+    where `state` this is old state of `someVariable` and `dispatch` is some function whitch return `action`'s of `useReducer`. 
 
- where `action` is variables in `someFunction` in  `useReducer` which are call like `action.type` .
+    where `action` is variables in `someFunction` in  `useReducer` which are call like `action.type` .
 
- This is complicated example, but maybe this will be need in future. 
+    This is complicated example, but maybe this will be need in future. 
 
- `axios` doesn't work with dispatch functions!!!
+    `axios` doesn't work with dispatch functions!!!
 
-    ReferenceError: Cannot access 'dispatchTodo' before initialization
+        ReferenceError: Cannot access 'dispatchTodo' before initialization
 
-To more complicated need to call `axios` with `async` and `await` parameters. 
+    To more complicated need to call `axios` with `async` and `await` parameters. 
 
-function `getTodo` in this commit is higer than `useReducer` because else it calls an error - need to declarate function... this is strange...
+    function `getTodo` in this commit is higer than `useReducer` because else it calls an error - need to declarate function... this is strange...
 
+5. `createContext` and `useContext`:
+
+    context declaration occur like that:
+
+    `let SomeNameOfContext = createContext({ someName: "somerealname" }) `
+    
+    context calling occur like that:
+
+    `let { soneName } = useContext(SomeNameOfContext);`
+
+    If `someName` was a one of props, need to delete it from props.
+    `someName` declarated as default value only when we use it in test, without `Provider`. 
+
+   `let SomeNameOfContext = createContext()` Than all what we need when we use it like as a `Provider`. When we use it in 2 or more different components need to import this context everywhere.
+
+   Context need to pass some props deep inside nested components without redeclaration in each of this components. And to do it need warp one of them like as:
+
+   `<SomeContext.Provider value={someInsideVariable}>
+        <SomeFirstComponent />
+    </SomeContext.Provider>`
+
+    ...let's say, In this example have 5 nested components inside `SomeFirstComponent` and we do not redeclarate any values inside this components, but only in `SomeSixthComponent` we use this value like that (first thing is import that):
+
+    `import SomeContext from '../contexts/SomeContext';`
+
+    and
+
+    `let someInsideVariableName = useContext(SomeContext);`
+
+    That is all. 
 
 <hr>
 <hr>
@@ -570,9 +600,15 @@ function `getTodo` in this commit is higer than `useReducer` because else it cal
 # P.S
 
 
-## legend
+## legend (notices)
 
 When I write like `some....` or `someComponent` that meens it is a template of any function, component or variable.
+
+all hooks are declared like as `someHook` but not `React.someHook` because all hooks are imports with `React` like as: `import React, { useState, useReducer } from 'react';`
+
+I try to write describing/example code with `Readme` description/notes in same `commit` to comfortable learn on every issue about `React`.
+
+
 
 <hr>
 Документ написан на английском, но с русским акцентом.
