@@ -11,6 +11,7 @@ import './App.css';
 import Comments from './components/pages/comments/CommentsPage';
 import Comment from './components/pages/comments/CommentPage';
 import About from './components/pages/About';
+import HookTests from "./components/pages/hook_tests/HookTests";
 
 //layouts
 import Header from './components/layouts/Header';
@@ -18,7 +19,7 @@ import Header from './components/layouts/Header';
 //this components
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
-import SecetedTodo from './components/SelectedTodo';
+import SelectedTodo from './components/SelectedTodo';
 
 //this hooks
 import { useGuestUserId } from './hooks/localStorage';
@@ -28,6 +29,7 @@ import { connection_url } from './constants/connections.js';
 
 //this contexts
 import TodoContext from './contexts/TodoContext';
+
 
 function App() {
 
@@ -104,10 +106,7 @@ function App() {
     })
   }
 
-
-
   return (
-
     <Router>
       <div className="App">
         <div className="container">
@@ -121,11 +120,11 @@ function App() {
 
               {todo ?
               <TodoContext.Provider value={todo}>
-                  <SecetedTodo />
+                  <SelectedTodo />
               </TodoContext.Provider>
               :
               <TodoContext.Provider value={{title: '♪'}}>
-                  <SecetedTodo />
+                  <SelectedTodo />
               </TodoContext.Provider>
               }
 
@@ -140,6 +139,9 @@ function App() {
           <Route path="/about" render={() => <About message="this is prop" />} />
           <Route exact path="/comments" component={Comments} />
 
+          <Route exact path="/hook_tests" component={HookTests} />
+
+          {/*read in README about pass params cross pages*/}
           <Route exact path="/comments/:id" render={({ match }) =>
             <Comment id={match.params.id} setLastReadCommentName={setLastReadCommentName} />}
           />

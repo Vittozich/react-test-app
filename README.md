@@ -40,6 +40,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 # Learn about
 
+# NOTE: PRE REACT HOOKS BELLOW =============
+
 ## Like in this.Video
 
 ### For thinking:
@@ -227,7 +229,7 @@ To use components like pages in `one page application` should use `react-router-
     npm i react-router-dom
 
 Creating page like a creating simple function, but in different folder like `pages`,
-but in this functions should use `<React.Fragment>` instead of wrapping standart `<div>`
+but in this functions should use `<React.Fragment>` instead of wrapping standard `<div>`
  in the `return{...over here...}`
 
 in `App.js` need to import component:
@@ -331,6 +333,8 @@ setName and setSomeArray it is custom functions (Hooks).
 Not so complicated
 
 <hr>
+
+# NOTE: PRE REACT HOOKS ABOVE =============
 
 When you create a page, you should capitalize a creating file as main function inside this file. 
 Otherwise, it doesn't work. Even if this is Index.js. 
@@ -520,6 +524,7 @@ Note: with end `.js` because this is not `React` components, but just `js` files
 <hr>
 
 # Educate with [Chantastic](https://twitter.com/chantastic/status/1201594041378496512)
+ (now He deleted all free courses from twitter, and deploy all of them to paid learning resource) 
 
 ## What I can get from this lessons?
 
@@ -624,6 +629,17 @@ Strange errors:  if calling function is outside `useEffect`:
         React Hook useEffect has a missing dependency: 'fetchData'. Either include it or remove the dependency array  react-hooks/exhaustive-depse it or remove the dependency array  react-hooks/exhaustive-deps
 
 but if it inside, all is OK. But why is `Chantastic` use it outside...
+
+<hr>
+
+# Educate with [Владилен Минин](https://youtu.be/xJZa2_aldDs?list=WL)
+
+## What I can get from this lessons? - fast answer : nothing
+
+Strange: in this video the author rewrite code in no reason way: `export default` in function add to end of code, when add `prop-types` validation.
+
+And it is a full copy this.Video with  Traversy Media but with hooks instead classes. The author does't say thanks to Traversy for content!
+
 
 <hr>
 

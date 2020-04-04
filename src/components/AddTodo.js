@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function AddTodo(props) {
+export default function AddTodo(props) {
 
   let [title, setTitle] = useState('');
 
@@ -19,7 +19,7 @@ function AddTodo(props) {
         type="text"
         name="title"
         style={{ flex: '10', padding: '5px' }}
-        placeholder="Добавить новый ...."
+        placeholder="Add new one ...."
         value={title}
         onChange={onChange}
       />
@@ -37,4 +37,4 @@ AddTodo.propTypes = {
   addTodo: PropTypes.func.isRequired
 }
 
-export default AddTodo
+
